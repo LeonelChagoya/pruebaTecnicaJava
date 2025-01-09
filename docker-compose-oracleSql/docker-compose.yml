@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  oracle-db:
+    image: gvenzl/oracle-xe:latest
+    container_name: oracle-container
+    ports:
+      - "1521:1521" # Puerto para conectarte a la base de datos
+      - "5500:5500" # Puerto para Enterprise Manager
+    environment:
+      ORACLE_PASSWORD: pass1234 #contraseña deseada
+      ORACLE_DISABLE_ASYNCH_IO: "true" 
+    volumes:
+      - oracle-data:/opt/oracle/oradata # Ruta donde se almacenan los datos de Oracle
+    restart: unless-stopped
+
+volumes:
+  oracle-data:
+    driver: local
