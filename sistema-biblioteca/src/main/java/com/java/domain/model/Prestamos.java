@@ -11,7 +11,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Prestamos {
-    private Long idPrestamo;
+    private Long id;
     private Long idUsuario;
     private Long idLibro;
     private Date fechaPrestamo;

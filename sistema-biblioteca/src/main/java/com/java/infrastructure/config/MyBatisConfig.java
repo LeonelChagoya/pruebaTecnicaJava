@@ -6,22 +6,24 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 
 @Configuration
+@EnableTransactionManagement
 public class MyBatisConfig {
 
     @Bean
     public DataSource dataSource() {
-        return new PooledDataSource(
-                "oracle.jdbc.driver.OracleDriver",
-                "jdbc:oracle:thin:@localhost:1521/XEPDB1",
-                "sys as sysdba",
-                "pass1234"
-        );
+        return org.springframework.boot.jdbc.DataSourceBuilder.create()
+                .driverClassName("oracle.jdbc.OracleDriver")
+                .url("jdbc:oracle:thin:@localhost:1521/XEPDB1")
+                .username("SYS as SYSDBA")
+                .password("pass1234")
+                .build();
     }
-
     @Bean
     public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
         SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
@@ -34,4 +36,10 @@ public class MyBatisConfig {
 
         return sessionFactory.getObject();
     }
+
+    @Bean
+    public DataSourceTransactionManager transactionManager(DataSource dataSource) {
+        return new DataSourceTransactionManager(dataSource);
+    }
+
 }

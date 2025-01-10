@@ -22,5 +22,5 @@ public class Usuario {
     private String email;
     private Date fechaRegistro;
     private Boolean estado;
-    private List<Rol> roles;
+
 }

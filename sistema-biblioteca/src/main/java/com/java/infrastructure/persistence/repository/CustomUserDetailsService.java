@@ -15,6 +15,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     public CustomUserDetailsService(UsuarioMapper usuarioMapper) {
         this.usuarioMapper = usuarioMapper;
+
     }
 
     @Override
@@ -27,7 +28,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         return User.builder()
                 .username(usuario.getUsername())
                 .password(usuario.getPassword())
-                .roles(usuario.getRoles().stream().map(role -> role.getNombreRol()).toArray(String[]::new))
+                .authorities("ROLE_ADMIN")
                 .build();
+     }
     }
-}

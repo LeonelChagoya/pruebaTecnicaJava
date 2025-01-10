@@ -13,9 +13,7 @@ public interface UsuarioMapper {
 
     @Select("SELECT * FROM Usuarios WHERE username = #{username}")
     @Results({
-            @Result(property = "id", column = "id_usuario"),
-            @Result(property = "roles", column = "id_usuario",
-                    many = @Many(select = "com.java.infrastructure.persistence.mapper.RolMapper.findRolesByUserId"))
+            @Result(property = "id", column = "id_usuario")
     })
     Usuario findByUsername(String username);
 
