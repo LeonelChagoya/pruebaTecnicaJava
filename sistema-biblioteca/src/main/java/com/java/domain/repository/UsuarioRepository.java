@@ -2,7 +2,6 @@ package com.java.domain.repository;
 
 import com.java.domain.model.Usuario;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 import java.util.Optional;
 

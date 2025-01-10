@@ -26,7 +26,7 @@ public class UsuarioController {
                                            @RequestParam(defaultValue = "10") int size) {
         return usuarioService.findAll(page, size).stream()
                 .map(user -> new UsuarioDTO(user.getUsername(), user.getNombre(), user.getApellidoPaterno(),
-                        user.getApellidoMaterno(), user.getEmail(), user.getEstado()))
+                        user.getApellidoMaterno(), user.getEmail()))
                 .collect(Collectors.toList());
     }
 
@@ -45,14 +45,14 @@ public class UsuarioController {
                     usuario.getNombre(),
                     usuario.getApellidoPaterno(),
                     usuario.getApellidoMaterno(),
-                    usuario.getEmail(),
-                    usuario.getEstado()
+                    usuario.getEmail()
             );
             return ResponseEntity.ok(usuarioDTO);
         } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();  // Retorna 404 si no se encuentra
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
+
     @PutMapping("/{id}")
     public ResponseEntity<Void> editarUsuario(@PathVariable Long id, @RequestBody Usuario usuario) {
         usuarioService.update(id, usuario);
