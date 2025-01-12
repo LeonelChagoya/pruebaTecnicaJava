@@ -10,6 +10,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LibrosDTO {
+    private Long id;
     private String titulo;
     private String autor;
     private String genero;

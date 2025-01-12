@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/libros")
+@CrossOrigin(origins = "*")
 public class LibrosController {
     private LibrosService librosService;
     public LibrosController(LibrosService librosService) {
@@ -23,9 +24,14 @@ public class LibrosController {
     public List<LibrosDTO> listarLibros(@RequestParam(defaultValue = "0") int page,
                                           @RequestParam(defaultValue = "10") int size) {
         return librosService.findAll(page, size).stream()
-                .map(libro -> new LibrosDTO(libro.getTitulo(),
-                        libro.getAutor(), libro.getIsbn(), libro.getGenero(),
-                        libro.getFechaPublicacion(),libro.getDescripcion()))
+                .map(libro -> new LibrosDTO(
+                        libro.getId(),
+                        libro.getTitulo(),
+                        libro.getAutor(),
+                        libro.getGenero(),
+                        libro.getIsbn(),
+                        libro.getFechaPublicacion(),
+                        libro.getDescripcion()))
                 .collect(Collectors.toList());
     }
 
@@ -41,6 +47,7 @@ public class LibrosController {
         if (libro.isPresent()) {
             CatalogoLibros  libroShow = libro.get();
             LibrosDTO libroDto = new LibrosDTO(
+                    libroShow.getId(),
                     libroShow.getTitulo(),
                     libroShow.getAutor(),
                     libroShow.getGenero(),
