@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -22,7 +24,8 @@ public class LibrosController {
 
     @GetMapping
     public List<LibrosDTO> listarLibros(@RequestParam(defaultValue = "0") int page,
-                                          @RequestParam(defaultValue = "10") int size) {
+                                          @RequestParam(defaultValue = "10") int size,
+                                        HttpServletRequest request) {
         return librosService.findAll(page, size).stream()
                 .map(libro -> new LibrosDTO(
                         libro.getId(),

@@ -34,7 +34,6 @@ public class AuthController {
             response.put("message", "Login exitoso");
             response.put("user", authentication.getPrincipal());
             return response;
-
         } catch (AuthenticationException e) {
             throw new RuntimeException("Credenciales inválidas");
         }

@@ -27,8 +27,10 @@ export class AuthService {
   isAuthenticated(): boolean {
     return !!this.getUser();
   }
-
-  logout(): void {
-    localStorage.removeItem(this.storageKey);
+  hasRole(role: string): boolean {
+    const user = this.getUser();
+    console.log(user?.authorities?.some((auth: any) => auth.authority === role))
+    console.log((user.authorities[0]).authority)
+    return user?.authorities?.some((auth: any) => auth.authority === role);
   }
 }

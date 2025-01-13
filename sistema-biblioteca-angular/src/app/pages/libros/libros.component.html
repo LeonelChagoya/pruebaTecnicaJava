@@ -1,1 +1,81 @@
-<p>libros works!</p>
+<div class="container">
+  <app-tabla-reusable
+    [columnas]="columnas"
+    [title]="tablaTitle"
+    [data]="data"
+    (edit)="onEdit($event)"
+    (delete)="onDelete($event)"
+    (create)="onCreate()"
+  ></app-tabla-reusable>
+
+  <app-modal-reutilizable
+    [title]="modalTitle"
+    [visible]="isModalVisible"
+    (close)="closeModal()"
+    (submit)="handleFormSubmit()"
+  >
+    <form>
+      <div class="mb-3">
+        <label for="titulo" class="form-label">Título:</label>
+        <input
+          id="titulo"
+          [(ngModel)]="formData.titulo"
+          name="titulo"
+          class="form-control"
+          placeholder="Ingresa el título"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="autor" class="form-label">Autor:</label>
+        <input
+          id="autor"
+          [(ngModel)]="formData.autor"
+          name="autor"
+          class="form-control"
+          placeholder="Ingresa el autor"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="genero" class="form-label">Género:</label>
+        <input
+          id="genero"
+          [(ngModel)]="formData.genero"
+          name="genero"
+          class="form-control"
+          placeholder="Ingresa el género"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="isbn" class="form-label">ISBN:</label>
+        <input
+          id="isbn"
+          [(ngModel)]="formData.isbn"
+          name="isbn"
+          class="form-control"
+          placeholder="Ingresa el ISBN"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="fechaPublicacion" class="form-label">Fecha de Publicación:</label>
+        <input
+          id="fechaPublicacion"
+          type="date"
+          [(ngModel)]="formData.fechaPublicacion"
+          name="fechaPublicacion"
+          class="form-control"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="descripcion" class="form-label">Descripción:</label>
+        <textarea
+          id="descripcion"
+          [(ngModel)]="formData.descripcion"
+          name="descripcion"
+          class="form-control"
+          rows="3"
+          placeholder="Ingresa la descripción"
+        ></textarea>
+      </div>
+    </form>
+  </app-modal-reutilizable>
+</div>

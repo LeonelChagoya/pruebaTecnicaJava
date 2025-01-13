@@ -1,1 +1,54 @@
-<p>inventario-libros works!</p>
+<div class="container">
+  <app-tabla-reusable
+    [title]="tablaTitle"
+    [columnas]="columnas"
+    [data]="data"
+    (edit)="onEdit($event)"
+    (delete)="onDelete($event)"
+    (create)="onCreate()"
+  ></app-tabla-reusable>
+
+  <app-modal-reutilizable
+    [title]="modalTitle"
+    [visible]="isModalVisible"
+    (close)="closeModal()"
+    (submit)="handleFormSubmit()"
+  >
+    <form>
+      <div class="mb-3">
+        <label for="idLibro" class="form-label">Seleccione un libro:</label>
+        <select
+          id="idLibro"
+          [(ngModel)]="formData.idLibro"
+          name="idLibro"
+          class="form-control"
+        >
+          <option *ngFor="let libro of libros" [value]="libro.id">{{ libro.titulo }}</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="cantidadTotal" class="form-label">Cantidad Total:</label>
+        <input
+          type="number"
+          id="cantidadTotal"
+          [(ngModel)]="formData.cantidadTotal"
+          name="autor"
+          class="form-control"
+          placeholder="Ingresa la cantidad total"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="cantidadDisponible" class="form-label">Cantidad Disponible:</label>
+        <input
+          type="number"
+          id="cantidadDisponible"
+          [(ngModel)]="formData.cantidadDisponible"
+          name="genero"
+          class="form-control"
+          placeholder="Ingresa el Cantidad Disponible"
+        />
+      </div>
+    </form>
+  </app-modal-reutilizable>
+</div>
+

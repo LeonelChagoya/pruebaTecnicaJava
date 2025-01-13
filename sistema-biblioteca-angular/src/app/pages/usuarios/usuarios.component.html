@@ -1,1 +1,81 @@
-<p>usuarios works!</p>
+<div class="container">
+  <app-tabla-reusable
+    [title]="tablaTitle"
+    [columnas]="columnas"
+    [data]="data"
+    (edit)="onEdit($event)"
+    (delete)="onDelete($event)"
+    (create)="onCreate()"
+  ></app-tabla-reusable>
+
+  <app-modal-reutilizable
+    [title]="modalTitle"
+    [visible]="isModalVisible"
+    (close)="closeModal()"
+    (submit)="handleFormSubmit()"
+  >
+    <form>
+      <div class="mb-3">
+        <label for="username" class="form-label">UserName:</label>
+        <input
+          id="username"
+          [(ngModel)]="formData.username"
+          name="titulo"
+          class="form-control"
+          placeholder="Ingresa el username"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre:</label>
+        <input
+          id="nombre"
+          [(ngModel)]="formData.nombre"
+          name="autor"
+          class="form-control"
+          placeholder="Ingresa el nombre"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="apellidoPaterno" class="form-label">Apellido Paterno:</label>
+        <input
+          id="apellidoPaterno"
+          [(ngModel)]="formData.apellidoPaterno"
+          name="apellidoPaterno"
+          class="form-control"
+          placeholder="Ingresa el apellido Paterno"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="apellidoMaterno" class="form-label">Apellido Materno:</label>
+        <input
+          id="apellidoMaterno"
+          [(ngModel)]="formData.apellidoMaterno"
+          name="isbn"
+          class="form-control"
+          placeholder="Ingresa el apellido Materno"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input
+          id="email"
+          type="text"
+          [(ngModel)]="formData.email"
+          name="email"
+          class="form-control"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password:</label>
+        <input
+          type="text"
+          id="password"
+          [(ngModel)]="formData.password"
+          name="password"
+          class="form-control"
+          placeholder="Ingresa la contraseña"
+        />
+      </div>
+    </form>
+  </app-modal-reutilizable>
+</div>

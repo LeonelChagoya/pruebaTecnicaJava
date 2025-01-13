@@ -4,7 +4,6 @@ import com.java.application.dto.InventarioLibrosDTO;
 import com.java.application.dto.UsuarioDTO;
 import com.java.application.service.InventarioLibrosService;
 import com.java.domain.model.InventarioLibros;
-import com.java.domain.model.Usuario;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -53,6 +52,8 @@ public class InventarioLibrosController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
+
+
 
 }
 

@@ -20,7 +20,7 @@ public interface InventarioLibrosMapper {
     List<InventarioLibros> findAll(@Param("offset") int offset, @Param("limit") int limit);
 
     @Insert("INSERT INTO Inventario_Libros (id_libro,cantidad_total,cantidad_disponible,estado) " +
-            "VALUES (#{idLibro}, #{cantidadTotal}, #{cantidadTotal}, 1)")
+            "VALUES (#{idLibro}, #{cantidadTotal}, #{cantidadDisponible}, 1)")
     @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "ID_INVENTARIO")
     void save(InventarioLibros libro);
 

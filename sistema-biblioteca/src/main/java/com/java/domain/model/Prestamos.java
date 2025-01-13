@@ -16,7 +16,7 @@ public class Prestamos {
     private Long idLibro;
     private Date fechaPrestamo;
     private Date fechaDevolucion;
-    private Integer estadoPrestamo;
+    private Boolean estadoPrestamo;
     private Boolean estado;
     private Usuario usuario;
     private CatalogoLibros libro;

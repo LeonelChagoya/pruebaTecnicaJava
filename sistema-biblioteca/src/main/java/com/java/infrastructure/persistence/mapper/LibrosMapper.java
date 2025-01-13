@@ -8,6 +8,9 @@ import java.util.List;
 @Mapper
 public interface LibrosMapper {
 
+    @Results({
+            @Result(property = "id", column = "id_libro")
+    })
     @Select("SELECT * FROM Catalogo_Libros WHERE estado  = 1 OFFSET #{offset} ROWS FETCH NEXT #{limit} ROWS ONLY")
     List<CatalogoLibros> findAll(@Param("offset") int offset, @Param("limit") int limit);
 

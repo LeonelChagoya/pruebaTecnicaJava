@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class InventarioLibrosDTO {
+    private Long id;
     private Long idLibro;
     private String titulo;
     private Integer cantidadTotal;
