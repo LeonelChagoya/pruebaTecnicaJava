@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/libros")
-@CrossOrigin(origins = "*")
+
 public class LibrosController {
     private LibrosService librosService;
     public LibrosController(LibrosService librosService) {
